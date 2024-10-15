@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-service
+  namespace: cs3219
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customer-service # match with labels.app
+  template:
+    metadata:
+      labels:
+        app: customer-service # match with matchLabels.app
+    spec:
+      containers:
+        - name: customer-service
+          image: qiaoen17/customer-service:1.0.0 
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 8080

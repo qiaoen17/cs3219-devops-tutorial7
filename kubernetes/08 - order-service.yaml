@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+  namespace: cs3219
+spec:
+  type: ClusterIP #NodePort
+  selector:
+    app: order-service
+  ports:
+    - port: 8080
+      targetPort: 8080
+      # nodePort: 31307
+      protocol: "TCP"

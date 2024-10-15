@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-service
+  namespace: cs3219
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catalog-service # match with labels.app
+  template:
+    metadata:
+      labels:
+        app: catalog-service # match with matchLabels.app
+    spec:
+      containers:
+        - name: catalog-service
+          image: qiaoen17/catalog-service:1.0.0 
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 8080
